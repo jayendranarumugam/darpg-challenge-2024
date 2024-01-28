@@ -1,0 +1,327 @@
+{
+  "code": {
+    "modify_query_with_history.jinja2": {
+      "name": "modify_query_with_history.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${inputs.chat_history}",
+          "id": "wwq3lsk1"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.question}",
+          "id": "mip6aa50"
+        }
+      },
+      "source": "modify_query_with_history.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "modify_query_with_history.jinja2"
+    },
+    "generate_prompt_context.py": {
+      "name": "generate_prompt_context.py",
+      "type": "python",
+      "inputs": {
+        "search_result": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${search_question_from_indexed_docs.output}",
+          "id": "gh93mcg6"
+        }
+      },
+      "description": "Generate the context for the prompt.",
+      "source": "generate_prompt_context.py",
+      "function": "generate_prompt_context",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "generate_prompt_context.py"
+    },
+    "Prompt_variants__Variant_0.jinja2": {
+      "name": "Prompt_variants__Variant_0.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.chat_history}",
+          "id": "dk9w8erq"
+        },
+        "contexts": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${generate_prompt_context.output}",
+          "id": "avrh63er"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.question}",
+          "id": "of0xzds5"
+        }
+      },
+      "source": "Prompt_variants__Variant_0.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "Prompt_variants__Variant_0.jinja2"
+    },
+    "Prompt_variants__Variant_1.jinja2": {
+      "name": "Prompt_variants__Variant_1.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.chat_history}",
+          "id": "5xm7cbw3"
+        },
+        "contexts": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${generate_prompt_context.output}",
+          "id": "6t4t1nt7"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.question}",
+          "id": "id99r33p"
+        }
+      },
+      "source": "Prompt_variants__Variant_1.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "Prompt_variants__Variant_1.jinja2"
+    },
+    "Prompt_variants__Variant_2.jinja2": {
+      "name": "Prompt_variants__Variant_2.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.chat_history}",
+          "id": "4hmbui6x"
+        },
+        "contexts": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${generate_prompt_context.output}",
+          "id": "zn0jfodq"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${flow.question}",
+          "id": "d55zhmhf"
+        }
+      },
+      "source": "Prompt_variants__Variant_2.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "Prompt_variants__Variant_2.jinja2"
+    },
+    "answer_the_question_with_context.jinja2": {
+      "name": "answer_the_question_with_context.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "prompt_text": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${Prompt_variants.output}",
+          "id": "zhx4v0et"
+        }
+      },
+      "source": "answer_the_question_with_context.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "answer_the_question_with_context.jinja2"
+    }
+  },
+  "package": {
+    "promptflow.tools.embedding.embedding": {
+      "name": "Embedding",
+      "type": "python",
+      "inputs": {
+        "connection": {
+          "type": [
+            "AzureOpenAIConnection",
+            "OpenAIConnection"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "testopenai",
+          "id": "luavjguq"
+        },
+        "deployment_name": {
+          "type": [
+            "string"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "AzureOpenAIConnection"
+          ],
+          "model_list": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ],
+          "capabilities": {
+            "completion": false,
+            "chat_completion": false,
+            "embeddings": true
+          },
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "text-embeddeding-deployment",
+          "id": "s66sfk87"
+        },
+        "input": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${modify_query_with_history.output}",
+          "id": "hssl046z"
+        },
+        "model": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "OpenAIConnection"
+          ],
+          "allow_manual_entry": true,
+          "is_multi_select": false,
+          "input_type": "default"
+        }
+      },
+      "description": "Use Open AI's embedding model to create an embedding vector representing the input text.",
+      "module": "promptflow.tools.embedding",
+      "function": "embedding",
+      "is_builtin": true,
+      "package": "promptflow-tools",
+      "package_version": "1.1.0rc2",
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "promptflow.tools.embedding.embedding"
+    },
+    "promptflow_vectordb.tool.vector_index_lookup.VectorIndexLookup.search": {
+      "name": "Vector Index Lookup",
+      "type": "python",
+      "inputs": {
+        "path": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "azureml://subscriptions/<sub-id>/resourcegroups/rg-AITESTPROJECTJAY/providers/Microsoft.MachineLearningServices/workspaces/jaymachinelearning/data/chat-prompt-flow/versions/1",
+          "id": "gfa29sue"
+        },
+        "query": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${embed_the_question.output}",
+          "id": "2utg7a13"
+        },
+        "top_k": {
+          "type": [
+            "int"
+          ],
+          "default": "3",
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "2",
+          "id": "mbhzubnt"
+        }
+      },
+      "description": "Search text or vector based query from AzureML Vector Index.",
+      "module": "promptflow_vectordb.tool.vector_index_lookup",
+      "class_name": "VectorIndexLookup",
+      "function": "search",
+      "is_builtin": true,
+      "package": "promptflow-vectordb",
+      "package_version": "0.0.1",
+      "enable_kwargs": false,
+      "tool_state": "stable"
+    }
+  }
+}
