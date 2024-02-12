@@ -703,7 +703,7 @@
       "description": "Search an AzureML Vector Index for relevant results using one or more text queries.",
       "type": "python",
       "package": "promptflow_vectordb",
-      "package_version": "0.2.3"
+      "package_version": "0.0.1"
     }
   }
 }

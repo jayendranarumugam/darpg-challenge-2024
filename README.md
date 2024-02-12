@@ -61,36 +61,36 @@ This will create and trigger a Job, which will do the basic steps of RAG Pattern
 
     ```yaml
     embeddings:
-    api_base: https://<openai-name>.openai.azure.com/
-    api_type: azure
-    api_version: 2023-07-01-preview
-    batch_size: '16'
-    connection:
-        id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<openai-connection-name>
-    connection_type: workspace_connection
-    deployment: <text-embeddeding-deployment-name>
-    dimension: 1536
-    file_format_version: '2'
-    kind: open_ai
-    model: text-embedding-ada-002
-    schema_version: '2'
+        api_base: https://<openai-name>.openai.azure.com/
+        api_type: azure
+        api_version: 2023-07-01-preview
+        batch_size: '16'
+        connection:
+            id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<openai-connection-name>
+        connection_type: workspace_connection
+        deployment: <text-embeddeding-deployment-name>
+        dimension: 1536
+        file_format_version: '2'
+        kind: open_ai
+        model: text-embedding-ada-002
+        schema_version: '2'
     index:
-    api_version: 2023-07-01-preview
-    connection:
-        id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<search-connection-name>
-    connection_type: workspace_connection
-    endpoint: https://<search-name>.search.windows.net
-    engine: azure-sdk
-    field_mapping:
-        content: content
-        embedding: contentVector
-        filename: filepath
-        metadata: meta_json_string
-        title: title
-        url: url
-    index: <vector-index-name>
-    kind: acs
-    semantic_configuration_name: azureml-default
+        api_version: 2023-07-01-preview
+        connection:
+            id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<search-connection-name>
+        connection_type: workspace_connection
+        endpoint: https://<search-name>.search.windows.net
+        engine: azure-sdk
+        field_mapping:
+            content: content
+            embedding: contentVector
+            filename: filepath
+            metadata: meta_json_string
+            title: title
+            url: url
+        index: <vector-index-name>
+        kind: acs
+        semantic_configuration_name: azureml-default
     ```
 - Create Prompt Flow on Azure Machine learning workspace (Optional)
 
