@@ -122,7 +122,7 @@ This Job will take around 10-20 mts to complete based on your file size.
 
    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=749281611&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope)
 
-1. Replace the [placeholders with actual values](#how-to-run-the-code) from your environment
+1. Replace the [placeholders with actual values](#replace-the-actual-values-in-the-code) from your environment
 
 1. Debug the Code using promptflow extension from vscode
 
