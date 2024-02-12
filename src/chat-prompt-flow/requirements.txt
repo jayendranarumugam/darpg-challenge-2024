@@ -1,1 +1,10 @@
-
+promptflow-vectordb[azure]
+promptflow_vectordb
+pymongo
+promptflow
+azure.ai.ml
+azure-ai-textanalytics
+azureml-sdk
+azureml-fsspec
+promptflow-sdk
+pymilvus

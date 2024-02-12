@@ -1,7 +1,10 @@
+environment:
+  python_requirements_txt: requirements.txt
 inputs:
   question:
     type: string
     is_chat_input: true
+    default: What is the code for Website Related Issues
   chat_history:
     type: list
     is_chat_input: false
@@ -19,40 +22,42 @@ nodes:
     type: code
     path: modify_query_with_history.jinja2
   inputs:
-    deployment_name: gpt35-turbo-deployment
+    deployment_name: <gpt35-turbo-deployment-name>
     temperature: 1
     top_p: 1
-    max_tokens: 500
+    max_tokens: 1000
     presence_penalty: 0
     frequency_penalty: 0
     chat_history: ${inputs.chat_history}
     question: ${flow.question}
   provider: AzureOpenAI
-  connection: testopenai
+  connection: <openai-connection-name>
   api: chat
   module: promptflow.tools.aoai
-  use_variants: false
-- name: embed_the_question
-  type: python
-  source:
-    type: package
-    tool: promptflow.tools.embedding.embedding
-  inputs:
-    connection: testopenai
-    deployment_name: text-embeddeding-deployment
-    input: ${modify_query_with_history.output}
-  aggregation: false
   use_variants: false
 - name: search_question_from_indexed_docs
   type: python
   source:
     type: package
-    tool: promptflow_vectordb.tool.vector_index_lookup.VectorIndexLookup.search
+    tool: promptflow_vectordb.tool.common_index_lookup.search
   inputs:
-    path: azureml://subscriptions/<sub-id>/resourcegroups/rg-AITESTPROJECTJAY/providers/Microsoft.MachineLearningServices/workspaces/jaymachinelearning/data/chat-prompt-flow/versions/1
-    query: ${embed_the_question.output}
-    top_k: "2"
-  aggregation: false
+    mlindex_content: >
+      embeddings: api_base: https://<openai-name>.openai.azure.com/ api_type:
+      azure api_version: 2023-07-01-preview batch_size: '16' connection:
+          id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<openai-connection-name>
+      connection_type: workspace_connection deployment: <text-embeddeding-deployment-name> dimension: 1536 file_format_version: '2' kind: open_ai model: text-embedding-ada-002 schema_version: '2' index: api_version: 2023-07-01-preview connection:
+          id: /subscriptions/<sub-id>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<machine-learning-workspace-name>/connections/<search-connection-name>
+      connection_type: workspace_connection endpoint: https://<search-name>.search.windows.net engine: azure-sdk field_mapping:
+          content: content
+          embedding: contentVector
+          filename: filepath
+          metadata: meta_json_string
+          title: title
+          url: url
+      index: <vector-index-name> kind: acs semantic_configuration_name: azureml-default
+    queries: ${modify_query_with_history.output}
+    query_type: Vector
+    top_k: 2
   use_variants: false
 - name: generate_prompt_context
   type: python
@@ -71,7 +76,7 @@ nodes:
     type: code
     path: answer_the_question_with_context.jinja2
   inputs:
-    deployment_name: gpt35-turbo-deployment
+    deployment_name: <gpt35-turbo-deployment-name>
     temperature: 0
     top_p: 1
     max_tokens: 1000
@@ -79,7 +84,7 @@ nodes:
     frequency_penalty: 0
     prompt_text: ${Prompt_variants.output}
   provider: AzureOpenAI
-  connection: testopenai
+  connection: <openai-connection-name>
   api: chat
   module: promptflow.tools.aoai
   aggregation: false
@@ -90,7 +95,6 @@ node_variants:
     variants:
       Variant_0:
         node:
-          name: Prompt_variants
           type: prompt
           source:
             type: code
@@ -102,7 +106,6 @@ node_variants:
           aggregation: false
       Variant_1:
         node:
-          name: Prompt_variants
           type: prompt
           source:
             type: code
@@ -114,7 +117,6 @@ node_variants:
           aggregation: false
       Variant_2:
         node:
-          name: Prompt_variants
           type: prompt
           source:
             type: code
@@ -124,5 +126,3 @@ node_variants:
             contexts: ${generate_prompt_context.output}
             question: ${flow.question}
           aggregation: false
-environment:
-  python_requirements_txt: requirements.txt

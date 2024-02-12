@@ -1,0 +1,4 @@
+{
+    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "/azureml-envs/prompt-flow/runtime/bin/python" //Path inside mcr.microsoft.com/azureml/promptflow/promptflow-runtime-stable image
+}

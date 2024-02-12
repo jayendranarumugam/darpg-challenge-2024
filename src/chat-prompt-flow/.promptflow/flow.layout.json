@@ -2,48 +2,48 @@
   "orientation": "Vertical",
   "nodeLayouts": {
     "inputs": {
-      "x": 385,
-      "y": 41,
+      "x": 290,
+      "y": 42,
       "index": -1
     },
     "outputs": {
-      "x": 67,
-      "y": 832,
+      "x": 220,
+      "y": 846,
       "index": -1
     },
     "modify_query_with_history": {
-      "x": 75,
-      "y": 132,
+      "x": 227.5,
+      "y": 176,
       "index": 0
     },
-    "embed_the_question": {
-      "x": 12,
-      "y": 282,
+    "search_question_from_indexed_docs": {
+      "x": 227.5,
+      "y": 310,
+      "height": 75,
       "index": 1
     },
-    "search_question_from_indexed_docs": {
-      "x": 12,
-      "y": 392,
+    "generate_prompt_context": {
+      "x": 227.5,
+      "y": 444,
       "height": 75,
       "index": 2
     },
-    "generate_prompt_context": {
-      "x": 12,
-      "y": 502,
+    "Prompt_variants": {
+      "x": 140,
+      "y": 578,
       "height": 75,
       "index": 3
     },
-    "Prompt_variants": {
-      "x": 67,
-      "y": 612,
+    "answer_the_question_with_context": {
+      "x": 140,
+      "y": 712,
       "height": 75,
       "index": 4
     },
-    "answer_the_question_with_context": {
-      "x": 67,
-      "y": 722,
-      "height": 75,
-      "index": 5
+    "Faiss_Index_Lookup_b2m2": {
+      "x": 470,
+      "y": 42,
+      "index": -1
     }
   },
   "viewport": {

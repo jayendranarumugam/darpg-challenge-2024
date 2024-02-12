@@ -14,7 +14,9 @@
     },
     "search_question_from_indexed_docs": {
       "variant_0": {
-        "inputs": {},
+        "inputs": {
+          "queries": []
+        },
         "inputsValue": {}
       }
     },
@@ -32,7 +34,9 @@
     },
     "answer_the_question_with_context": {
       "variant_0": {
-        "inputs": {},
+        "inputs": {
+          "response_format": []
+        },
         "inputsValue": {}
       }
     }

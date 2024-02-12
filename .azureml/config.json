@@ -1,0 +1,5 @@
+{
+  "subscription_id": "<sub-id>",
+  "resource_group": "<resource-group-name>",
+  "workspace_name": "<machine-learning-workspace-name>"
+}
